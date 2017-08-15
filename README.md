@@ -1,5 +1,5 @@
 # e-Commerce
-e-Commerce [Asp.Net Core MVC 6]
+e-Commerce [Asp.Net Core MVC 6 Multi Layer Project]
 
 
 <p> .Net Core sdk version </p>
@@ -12,7 +12,7 @@ e-Commerce [Asp.Net Core MVC 6]
 	e-Commerce[Solution]
 		|
 		|
-		|---src
+		|------src
 		|	|	
 		|	|---Commerce.Contracts
 		|	|
@@ -23,7 +23,7 @@ e-Commerce [Asp.Net Core MVC 6]
 		|	|---Commerce.Web
 		|
 		|		
-		|---test
+		|------test
 			|
 			|---Commerce.DAL.Test
 			|	
