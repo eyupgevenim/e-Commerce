@@ -10,7 +10,7 @@ namespace Commerce.Model
     public class Basket : IBasket
     {
         [Key]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public DateTime date { get; set; }
 
         public virtual ICollection<BasketItem> BasketItems { get; set; }
@@ -19,7 +19,7 @@ namespace Commerce.Model
 
         public Basket()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             this.BasketItems = new HashSet<BasketItem>();
             this.BasketVouchers = new HashSet<BasketVoucher>();
         }
@@ -34,7 +34,7 @@ namespace Commerce.Model
         }
 
 
-        public virtual Guid UserId { get; set; }
+        public string UserId { get; set; }
         public virtual User User { get; set; }
 
 

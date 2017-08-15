@@ -10,7 +10,7 @@ namespace Commerce.Contracts.Models
         int Id { get; set; }
         DateTime OrderDate { get; set; }
 
-        Guid UserId { get; set; }
+        string UserId { get; set; }
 
         ICollection<IOrderItem> IOrderItems { get; }
     }

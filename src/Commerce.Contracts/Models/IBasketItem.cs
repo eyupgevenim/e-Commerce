@@ -10,7 +10,7 @@ namespace Commerce.Contracts.Models
         int Id { get; set; }
         int Quantity { get; set; }
 
-        Guid BasketId { get; set; }
+        string BasketId { get; set; }
 
         int ProductId { get; set; }
     }

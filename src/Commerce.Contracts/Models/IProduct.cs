@@ -13,6 +13,8 @@ namespace Commerce.Contracts.Models
         string ImageUrl { get; set; }
         decimal Price { get; set; }
 
+        int CategoryId { get; set; }
+
         ICollection<IOrderItem> IOrderItems { get; }
         ICollection<IBasketItem> IBasketItems { get; }
     }

@@ -16,7 +16,7 @@ namespace Commerce.Model
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
-        public Guid BasketId { get; set; }
+        public string BasketId { get; set; }
         public virtual Basket Basket { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace Commerce.Contracts.Models
 {
     public interface IBasket
     {
-        Guid Id { get; set; }
+        string Id { get; set; }
         DateTime date { get; set; }
 
         ICollection<IBasketItem> IBasketItems { get; }
         ICollection<IBasketVoucher> IBasketVouchers { get; }
 
-        Guid UserId { get; set; }
+        string UserId { get; set; }
 
         void AddBasketItem(IBasketItem item);
         void AddBasketVoucher(IBasketVoucher voucher);

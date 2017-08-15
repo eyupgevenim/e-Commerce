@@ -20,6 +20,9 @@ namespace Commerce.Model
         public decimal Price { get; set; }
         public decimal CostPrice { get; set; }
 
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
+
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<BasketItem> BasketItems { get; set; }
 

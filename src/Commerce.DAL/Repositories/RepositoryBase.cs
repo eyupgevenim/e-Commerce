@@ -48,10 +48,10 @@ namespace Commerce.DAL.Repositories
             return dbSet;
         }
 
-        public virtual IQueryable<TEntity> GetAll(object filter)
+        public virtual IQueryable<TEntity> GetAll(Func<TEntity, bool> where)
         {
-            return null; //need to override in order to implement specific filtering.
-
+            //need to override in order to implement specific filtering.
+            return dbSet.Where(where).AsQueryable();
         }
 
         //public virtual TEntity GetById(object id)
@@ -66,10 +66,16 @@ namespace Commerce.DAL.Repositories
 
         }
 
-        public virtual IQueryable<TEntity> GetPaged(int top = 20, int skip = 0, object orderBy = null, object filter = null)
+        public virtual IQueryable<TEntity> GetPaged<TKey>(int top = 20, int skip = 0, Func<TEntity,TKey> orderBy = null, Func<TEntity,bool> where = null)
         {
+            //need to override in order to implement specific filtering and ordering
+            return dbSet.Skip(skip).Take(top).OrderBy(orderBy).Where(where).AsQueryable();
+        }
+
+        public virtual IQueryable<TEntity> GetPaged(int top = 20, int skip = 0)
+        {
+            //need to override in order to implement specific filtering and ordering
             return dbSet.Skip(skip).Take(top);
-            //return null; //need to override in order to implement specific filtering and ordering
         }
 
         public virtual void Insert(TEntity entity)

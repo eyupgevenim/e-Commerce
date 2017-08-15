@@ -8,7 +8,7 @@ using Commerce.DAL.Data;
 namespace Commerce.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20170812105945_Initial")]
+    [Migration("20170815103431_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,18 +19,15 @@ namespace Commerce.DAL.Migrations
 
             modelBuilder.Entity("Commerce.Model.Basket", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("Id");
 
-                    b.Property<Guid>("UserId");
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.Property<DateTime>("date");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Baskets");
                 });
@@ -40,7 +37,7 @@ namespace Commerce.DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("BasketId");
+                    b.Property<string>("BasketId");
 
                     b.Property<int>("ProductId");
 
@@ -62,7 +59,7 @@ namespace Commerce.DAL.Migrations
 
                     b.Property<int>("AppliesToProductId");
 
-                    b.Property<Guid>("BasketId");
+                    b.Property<string>("BasketId");
 
                     b.Property<decimal>("Value");
 
@@ -86,6 +83,22 @@ namespace Commerce.DAL.Migrations
                     b.ToTable("BasketVouchers");
                 });
 
+            modelBuilder.Entity("Commerce.Model.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CategoryName");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Picture");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("Commerce.Model.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -95,13 +108,11 @@ namespace Commerce.DAL.Migrations
 
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<Guid>("UserId");
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -138,6 +149,8 @@ namespace Commerce.DAL.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CategoryId");
+
                     b.Property<decimal>("CostPrice");
 
                     b.Property<string>("Description");
@@ -148,6 +161,8 @@ namespace Commerce.DAL.Migrations
                     b.Property<decimal>("Price");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -361,15 +376,14 @@ namespace Commerce.DAL.Migrations
                 {
                     b.HasOne("Commerce.Model.User", "User")
                         .WithMany("Baskets")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Commerce.Model.BasketItem", b =>
                 {
                     b.HasOne("Commerce.Model.Basket", "Basket")
                         .WithMany("BasketItems")
-                        .HasForeignKey("BasketId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BasketId");
 
                     b.HasOne("Commerce.Model.Product", "Product")
                         .WithMany("BasketItems")
@@ -381,8 +395,7 @@ namespace Commerce.DAL.Migrations
                 {
                     b.HasOne("Commerce.Model.Basket", "Basket")
                         .WithMany("BasketVouchers")
-                        .HasForeignKey("BasketId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BasketId");
 
                     b.HasOne("Commerce.Model.Voucher", "Voucher")
                         .WithMany("BasketVouchers")
@@ -394,7 +407,7 @@ namespace Commerce.DAL.Migrations
                 {
                     b.HasOne("Commerce.Model.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Commerce.Model.OrderItem", b =>
@@ -407,6 +420,14 @@ namespace Commerce.DAL.Migrations
                     b.HasOne("Commerce.Model.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Commerce.Model.Product", b =>
+                {
+                    b.HasOne("Commerce.Model.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

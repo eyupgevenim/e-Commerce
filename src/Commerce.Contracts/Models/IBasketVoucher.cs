@@ -14,7 +14,7 @@ namespace Commerce.Contracts.Models
         string VoucherDescription { get; set; }
         string VoucherType { get; set; }
 
-        Guid BasketId { get; set; }
+        string BasketId { get; set; }
 
         int VoucherId { get; set; }
     }
