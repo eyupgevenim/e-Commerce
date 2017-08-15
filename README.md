@@ -8,7 +8,7 @@ e-Commerce [Asp.Net Core MVC 6]
 
 <h4> Project Directory </h4>
 <br />
-<code> 
+<pre> 
 	e-Commerce[Solution]
 		|
 		|
@@ -29,7 +29,7 @@ e-Commerce [Asp.Net Core MVC 6]
 			|	
 			|---Commerce.Web.Test
 				
-</code>
+</pre>
 
 <h4> Edit database connection string in appsettings.json </h4>
 <code> 
