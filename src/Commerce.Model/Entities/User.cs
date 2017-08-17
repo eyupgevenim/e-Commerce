@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Commerce.Contracts.Models;
 
-namespace Commerce.Model
+namespace Commerce.Model.Entities
 {
     public class User : IdentityUser, IUser
     {

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Commerce.Model
+namespace Commerce.Model.Entities
 {
     public class VoucherType : IVoucherType
     {

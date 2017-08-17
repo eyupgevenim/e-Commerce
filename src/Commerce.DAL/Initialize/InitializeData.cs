@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Commerce.DAL.Data;
-using Commerce.Model;
+using Commerce.Model.Entities;
 
 namespace Commerce.DAL.Initialize
 {

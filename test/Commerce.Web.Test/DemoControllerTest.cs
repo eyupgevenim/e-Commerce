@@ -1,5 +1,5 @@
 ﻿using Commerce.Contracts.Repositories;
-using Commerce.Model;
+using Commerce.Model.Entities;
 using Commerce.Web.Controllers;
 using Moq;
 using System;

@@ -1,5 +1,5 @@
 ﻿using Commerce.DAL.Data;
-using Commerce.Model;
+using Commerce.Model.Entities;
 using Commerce.Web.Controllers;
 using Commerce.Web.Models.ManageViewModels;
 using Commerce.Web.Services;

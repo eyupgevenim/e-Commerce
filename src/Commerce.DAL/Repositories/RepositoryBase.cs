@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Linq.Expressions;
 
 namespace Commerce.DAL.Repositories
 {
@@ -21,6 +23,11 @@ namespace Commerce.DAL.Repositories
         public virtual void Commit()
         {
             context.SaveChanges();
+        }
+
+        public virtual async Task CommitAsync()
+        {
+            await context.SaveChangesAsync();
         }
 
         public virtual void Delete(TEntity entity)
@@ -87,6 +94,26 @@ namespace Commerce.DAL.Repositories
         {
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void RunCommand(string query)
+        {
+            context.Database.ExecuteSqlCommand(query);
+        }
+
+        public async Task RunCommandAsync(string query)
+        {
+            await context.Database.ExecuteSqlCommandAsync(query);
+        }
+
+        public void RunCommandWithParameter(string query, params object[] parameters)
+        {
+            context.Database.ExecuteSqlCommand(query, parameters);
+        }
+        
+        public async Task RunCommandWithParameterAsync(string query, CancellationToken cancellationToken = default(CancellationToken), params object[] parameters)
+        {
+            await context.Database.ExecuteSqlCommandAsync(query, cancellationToken, parameters);
         }
     }
 }

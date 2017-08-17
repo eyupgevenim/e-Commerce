@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Commerce.Model;
+using Commerce.Model.Entities;
 
 namespace Commerce.DAL.Repositories
 {

@@ -1,5 +1,5 @@
 ﻿using Commerce.DAL.Data;
-using Commerce.Model;
+using Commerce.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

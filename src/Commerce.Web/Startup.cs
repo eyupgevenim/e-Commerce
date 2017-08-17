@@ -14,7 +14,7 @@ using Commerce.Web.Services;
 using Commerce.DAL.Data;
 using Commerce.Contracts.Repositories;
 using Commerce.DAL.Repositories;
-using Commerce.Model;
+using Commerce.Model.Entities;
 using Commerce.DAL.Initialize;
 
 namespace Commerce.Web
@@ -74,7 +74,7 @@ namespace Commerce.Web
             services.AddTransient<IRepositoryBase<VoucherType>, VoucherTypeRepository>();
 
             services.AddSingleton<IRepositoryBase<BasketVoucher>, BasketVoucherRepository>();
-
+            services.AddSingleton<IRepositoryBase<Category>, CategoryRepository>();
 
         }
 

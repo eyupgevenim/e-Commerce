@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using Commerce.Web.Models;
 using Commerce.Web.Models.AccountViewModels;
 using Commerce.Web.Services;
-using Commerce.Model;
+using Commerce.Model.Entities;
 
 namespace Commerce.Web.Controllers
 {
